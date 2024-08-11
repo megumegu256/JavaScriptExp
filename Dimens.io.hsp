@@ -1,0 +1,368 @@
+#include "hspmath.as"
+#module def
+	#include "hspmath.as"
+    #defcfunc fact int x1
+    	xa = x1
+    	if xa <= 0{
+	    	return 1
+    	}else{
+	    	return xa * fact(xa-1)
+	   	}
+
+
+    #defcfunc comb int x2, int y2
+    return fact(x2)/(fact(y2)*fact(x2 - y2))
+
+	    
+	#defcfunc mult array x3, array y3
+		if length2(x3) != length(y3): return 0
+		ddim mult_,length(x3),length2(y3)
+		repeat length(x3)
+			i3 = cnt
+			repeat length2(y3)
+				j3 = cnt
+				repeat length2(x3)
+					k3 = cnt
+					mult_(i3,j3) += double(x3(i3,k3)) * double(y3(k3,j3))
+				loop
+			loop
+		loop
+    return 0
+
+
+    #defcfunc E int x4
+    	dim E_,x4,x4
+    	repeat x4
+    		i4 = cnt
+    		repeat x4
+    			j4 = cnt
+    			if i4==j4{
+					E_(i4,j4) = 1
+	    		}else{
+					E_(i4,j4) = 0
+		    	}
+		    loop
+		loop
+	return 0
+
+	#defcfunc arrp array x5, int y5
+		ap = ""
+		repeat length(x5)
+			i5 = cnt
+			ap += "("
+			repeat length2(x5)
+				j5 = cnt
+				if y5 == 0{
+					ap += ""+int(x5(i5,j5))+""
+				}else{
+					ap += ""+double(x5(i5,j5))+""
+				}
+				if j5+1 < length2(x5) : ap += ","
+			loop
+		ap += ")"
+		if i5+1 < length(x5) : ap += ","
+		loop
+		mes ap
+	return 0
+
+
+	#defcfunc nrm int N, int iv, int jv, double vt
+		ddim nrm_,N,N
+		_ = E(N) //単位行列作成
+		repeat N
+			i = cnt
+			repeat N
+				j = cnt
+				nrm_(i,j) = double(E_@def(i,j)) //単位行列コピー
+			loop
+		loop
+
+
+		th = M_PI*vt/180
+		cv = cos(th)
+		sv = sin(th)
+
+		nrm_(iv,iv) = cv
+		nrm_(iv,jv) = -sv
+		nrm_(jv,iv) = sv
+		nrm_(jv,jv) = cv
+
+		
+	return 0
+
+		
+
+    #defcfunc rot int N, array x6, array y6
+		//座標行列コピー
+    	ddim rot_,N
+    	repeat N
+			m6 = cnt
+			repeat length2(x6)
+				n6 = cnt 
+				rot_(m6,n6) = double(x6(m6,n6))
+			loop
+		loop
+		
+    	t = 0
+    	repeat N
+    		i6 = cnt
+    		repeat N-i6-1
+    			j6 = cnt+i6+1
+    			_ = nrm(N,i6,j6,y6.t)
+    			_ = mult(nrm_@def,rot_)
+
+    			repeat length(mult_@def)
+					k6 = cnt
+					repeat length2(mult_@def)
+						l6 = cnt
+						rot_(k6,l6) = mult_@def(k6,l6)
+					loop
+				loop
+
+				t += 1
+				
+			loop
+		loop
+	return 0
+
+	    	
+	#defcfunc sum array x7, array y7
+    	ddim sum_,length(x7)
+    	sum_(0,0) = 0.0
+    	repeat length(x7)
+			sum_.cnt = double(x7.cnt) + double(y7.cnt)
+		loop
+	return 0
+
+
+	#defcfunc lineN int N
+	if N == 1 : return 1
+	return int(pow(2,N-1)) + 2 * lineN(N-1)
+
+
+#global
+
+
+
+
+
+
+scrx = 640.0
+scry = 640.0
+
+disx = 1920
+disy = 1080
+
+wd = 2.0
+screen 0, scrx*wd, scry, 0, disx/3 - scrx*wd/2, disy/3 - scry/2
+
+////////////////////////////////////////////////
+N = 5
+
+Sp = " "
+
+Zo = 100
+Ps = 4
+PRPx = scrx*wd/2
+PRPy = scry/2
+
+marxt = 1
+
+*main
+	// point(0) = (x,y,z,...)
+	// point(1) = (x,y,z,...)
+
+
+	
+	if marxt = 0{
+		ddim point,100
+		dim lines,2
+		
+		point(0,0)  = -1.0, -1.0, -1.0, -1.0, -1.0
+		point(0,1)  =  1.0, -1.0, -1.0, -1.0, -1.0
+		point(0,2)  = -1.0,  1.0, -1.0, -1.0, -1.0
+		point(0,3)  =  1.0,  1.0, -1.0, -1.0, -1.0
+
+	}else{
+		ddim point,100
+		dim lines,2
+		
+		repeat pow(2,N)
+			j = cnt
+			repeat N
+				i = cnt
+
+				if (j/(pow(2,i))) \ 2 == 0{
+					f = -1.0
+				}else{
+					f = 1.0
+				}
+
+				point(i,j) = f
+			loop
+		loop
+
+		///////////////////////////////////////////
+		repeat N
+			j = cnt
+			f = int(pow(2,N-1))
+			repeat f
+				i = cnt
+				p = int(pow(2,j))
+				lines(0, j*f + i) = i+p*(i/p),i+p*(i/p) + p
+			loop
+		loop
+		////////////////////////////////////////////
+		
+	}
+
+
+	ddim pocol,100
+	repeat 1000
+		pocol(0,cnt)  = rnd(256), rnd(256), rnd(256)
+	loop
+
+	dim poTF,2
+	repeat 1000
+		poTF(cnt) = 1
+	loop
+	
+
+
+
+	dim Vo,100
+	Vo(0,0) = 0,0,0,0,0,0,0,0,0,0
+	dim Vh,100
+	Vh(0,0) = 30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30
+	dim Vr,100
+	Vr(0,0) = 1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1
+	dim Va,100
+	Va(0,0) = 0,0,0,0,0,0,0,0,0,0
+
+
+
+
+
+	repeat
+		;cls 4
+		redraw 2
+			color 32,32,32:boxf
+			color 108,124,116:boxf (wd-1)/2*scrx, 0,(wd+1)/2*scrx, scry
+
+			title "Dimens.io"+cnt
+
+			color 255,0,0
+
+
+	    	repeat length(Vh)
+	    		if 0 > Vh.cnt + Vr.cnt{
+					Vh.cnt += Vr.cnt + 360
+				}else:if Vh.cnt + Vr.cnt >= 360{
+					Vh.cnt += Vr.cnt - 360
+				}else{
+					Vh.cnt += Vr.cnt
+					}
+			loop
+
+			_ = sum(Vo,Vh) ; 角度の実数値
+			;_ = arrp(sum_@def,0)
+			_ = rot(N,point,sum_@def) ;mult
+			;_ = arrp(rot_@def,1)
+			;_ = arrp(point,1)
+			
+			repeat length2(point) ;点表示
+				i = cnt
+
+				cx =  rot_@def(0,i) * Zo + PRPx
+				cy = -rot_@def(1,i) * Zo + PRPy
+
+				cpx0 = cx - Ps
+				cpy0 = cy - Ps
+				cpx1 = cx + Ps
+				cpy1 = cy + Ps
+				
+				if poTF.cnt == 1{
+					color pocol(0,i), pocol(1,i), pocol(2,i) : circle cpx0, cpy0, cpx1, cpy1, 1
+					color 255,0,0 : pos cx,cy : mes i
+				}
+			loop
+
+
+			repeat length2(lines)
+				i = cnt
+				
+				px0 =  rot_@def(0,lines(0,i)) * Zo + PRPx
+				py0 = -rot_@def(1,lines(0,i)) * Zo + PRPy
+				px1 =  rot_@def(0,lines(1,i)) * Zo + PRPx
+				py1 = -rot_@def(1,lines(1,i)) * Zo + PRPy
+
+				color 0,0,0 : line px0,py0,px1,py1
+			loop
+/*
+*/
+
+		
+			/*N
+			color 255,255,255 : pos (wd+1)/2*scrx+40,10
+			if N == 2{
+				mes "次元平面"
+			}else:if N == 3{
+				mes "次元立体"
+			}else:if N >= 4 : if N <= 12{
+				mes "次元超立体"
+			}else{
+				N = 1
+			}
+			
+			color 255,255,255 : pos (wd+1)/2*scrx+10,40  : mes "初期角度 θ_o <"+comb(N,2)+">"
+			color 255,255,255 : pos (wd+1)/2*scrx+10,100 : mes "手動角度 θ_h <"+comb(N,2)+">"
+			color 255,255,255 : pos (wd+1)/2*scrx+10,160 : mes "変化角度 θ_r <"+comb(N,2)+">"
+			
+
+			if Vof == ""{
+				repeat comb(N,2)
+					Vof += "0 "
+				loop
+			}
+
+			if Vhf == ""{
+				repeat comb(N,2)
+					Vhf += "0 "
+				loop
+			}
+
+			if Vrf == ""{
+				repeat comb(N,2)
+					Vrf += "0 "
+				loop
+			}
+			AAA = "000 000 000"
+			split AAA,Sp,outcome
+			repeat stat
+				Vo.cnt = int(outcome(cnt))
+			loop
+
+
+			split Vhf,Sp,outcome
+			repeat stat
+				Vh.cnt = int(outcome(cnt))
+			loop
+
+
+			split Vrf,Sp,outcome
+			repeat stat
+				Vr.cnt = int(outcome(cnt))
+			loop
+
+*/
+
+
+
+			getkey key,27
+			if key = 1 : end
+
+			
+		redraw 1
+		wait 10
+	loop
+stop
