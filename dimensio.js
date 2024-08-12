@@ -21,7 +21,6 @@ function mult(x, y){
         z[i] = new Array(y[0].length).fill(0);
     }
 
-
     for (let i = 0; i < x.length; i++) {
         for (let j = 0; j < y[0].length; j++) {
             z[i][j] = 0;
@@ -92,7 +91,6 @@ function sum(x,y,z){
         z[i] = x[i] + y[i];
     }
 }
-
 
 let N = 4;
 let V = [30,0,45,60,0,45];
@@ -214,7 +212,6 @@ function buttonClick(){
 
     let rotpos = rot(N,point,V);
 
-
     //図形の表示
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -257,7 +254,5 @@ function buttonClick(){
         ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 3, 0, 2 * Math.PI);
         ctx.closePath();
         ctx.fill();
-    }    
-
-
+    }
 }
