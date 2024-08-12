@@ -125,6 +125,11 @@ msg_vr.innerText = "現在の変化速度："+Vr;
 let vncr = document.getElementById('vncr');
 vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";
 
+let checkButtonc = document.getElementById('checkButtonc');
+checkButtonc.addEventListener('click', buttonClickc);
+
+let C = true;
+
 buttonClick();
 
 
@@ -183,6 +188,11 @@ function buttonClickvr(){
     }
 
     ele_vr.value = "";
+    buttonClick();
+}
+
+function buttonClickc(){
+    C = !C;
     buttonClick();
 }
 
@@ -254,15 +264,23 @@ function buttonClick(){
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#46a';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (C) {
+        ctx.fillStyle = '#46a';
+    }else{
+        ctx.fillStyle = '#dca';
+    }
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
     
 
     let r = 100;
 
     //線の表示
     for (let i = 0; i < lines[0].length; i++) {
-        ctx.strokeStyle = '#88f';
+        if(C){
+            ctx.strokeStyle = '#88f';
+        }else{
+            ctx.strokeStyle = '#dc8';
+        }
         ctx.beginPath();
         ctx.lineWidth = 3;
         ctx.moveTo(r*rotpos[0][lines[0][i]]+320, r*rotpos[1][lines[0][i]]+240)
@@ -270,9 +288,13 @@ function buttonClick(){
         ctx.stroke();
         ctx.closePath();
 
-        ctx.strokeStyle = '#afc';
-        ctx.beginPath();
-        ctx.lineWidth = 1;
+        if (C) {
+            ctx.strokeStyle = '#afc';
+        }else{
+            ctx.strokeStyle = '#fdd';
+        }
+            ctx.beginPath();
+        ctx.lineWidth = 2;
         ctx.moveTo(r*rotpos[0][lines[0][i]]+320, r*rotpos[1][lines[0][i]]+240)
         ctx.lineTo(r*rotpos[0][lines[1][i]]+320, r*rotpos[1][lines[1][i]]+240);
         ctx.stroke();
@@ -281,13 +303,21 @@ function buttonClick(){
 
     //点の表示
     for (let i = 0; i < rotpos[0].length; i++) {
-        ctx.fillStyle = '#048';
+        if (C) {
+            ctx.fillStyle = '#048';
+        }else{
+            ctx.fillStyle = '#840';
+        }
         ctx.beginPath();
         ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI);
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = '#0fa';
+        if (C) {
+            ctx.fillStyle = '#0fa';
+        }else{
+            ctx.fillStyle = '950';
+        }
         ctx.beginPath();
         ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 3, 0, 2 * Math.PI);
         ctx.closePath();
