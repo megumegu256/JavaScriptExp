@@ -294,6 +294,23 @@
                         　context.stroke();</br>
                     </div>
                     </br>
+                
+                <h3>アニメーション</h3>
+                    <p>JavaScriptを使用してアニメーションを作成することができる。アニメーションを作成する際には、requestAnimationFrame()を使用してアニメーションを描画する関数を呼び出すことができる。また、setTimeout()を使用することでアニメーションの速度を調整することができる。</p>
+                    <div class="list">
+                        　//main_animation.js</br>
+                        　let t = 0;</br> 
+                        　function incrementCounter() {</br>
+                        　　console.log(t);</br>
+                        　　t++;</br>
+                        　　setTimeout(sleep, 10);</br>
+                        　　function sleep(){</br>
+                        　　    requestAnimationFrame(incrementCounter);</br>
+                        　　}</br>
+                        　}</br>
+                        　requestAnimationFrame(incrementCounter);</br>
+                    </div>
+                    </br>
 
             <h2>作成例</h2>
                 <p>以上までの技術を扱い、例としてn次元超立方体を2次元に射影して描画するプログラムを作成した。</p>
@@ -301,15 +318,15 @@
 
                 <label>n次元超立方体：n=<input type="text" size="2" value="" id="ele_n">(2<=n<=8～12)</label></br>
                 <input type="button" value="更新" id="checkButtonn"></br>
-                <p id = "msg_n"></p></br>
+                <p class="line" id = "msg_n"></p></br>
 
                 <label>座標軸間の角度：<input type="text" size="50" value="" id="ele_v"><p id = "vncr"></p></label>
                 <input type="button" value="更新" id="checkButtonv"></br>
-                <p id = "msg_v"></p></br>
+                <p class="line" id = "msg_v"></p></br>
 
                 <label>角度の変化速度：<input type="text" size="50" value="" id="ele_vr"><p id = "vncr"></p></label>
                 <input type="button" value="更新" id="checkButtonvr"></br>
-                <p id = "msg_vr"></p></br>
+                <p class="line" id = "msg_vr"></p></br>
 
                 <script src="dimensio.js"></script>
 

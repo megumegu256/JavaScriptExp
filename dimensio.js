@@ -302,7 +302,7 @@ function incrementCounter() {
     sum(V,Vr);
     
     for (let i = 0; i < V.length; i++) {
-        if (V[i] <= 360) {
+        if (V[i] >= 360) {
             V[i] = V[i]%360;
         }
     }
