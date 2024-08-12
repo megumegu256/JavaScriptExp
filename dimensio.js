@@ -26,15 +26,18 @@ function mult(x, y, z){
     }
 }
 
-function E(z,n){
+function cMat(n) {
+    var mat = new Array(n);
     for (var i = 0; i < n; i++) {
-        for (var j = 0; j < n; j++) {
-            if(i==j){
-                z[i][j] = 1;
-            }else{
-                z[i][j] = 0;
-            }
-        }
+        mat[i] = new Array(n).fill(0);
+    }
+    return mat;
+}
+
+function E(z,n){
+    z = cMat(n);
+    for (var i = 0; i < n; i++) {
+        z[i][i] = 1;
     }
 }
 
@@ -51,12 +54,10 @@ function nrm(n,z,iv,jv,vt){
     z[jv][jv] = cv;
 }
 
-var N = 4;
-
 function rot(n,x,y){
     var t = 0;
     var jt = 0;
-    var m = [[]];
+    var m = cMat(n);
     for (var i = 0; i < n; i++) {
         for (var j = 0; j < n-i-1; j++) {
             jt = j+i+1;
@@ -79,6 +80,6 @@ var N = 4;
 
 var point = [[1,2,3,4],[0,5,3,6],[2,2,2,2],[1,1,1,1]];
 
-var V = [0,0,0,0];
+var V = [0,0,0,0,0,0,0,0,0];
 
 console.log(rot(N,point,V));
