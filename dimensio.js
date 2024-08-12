@@ -94,8 +94,8 @@ function sum(x,y,z){
 }
 
 
-var N = 3;
-var V = new Array(comb(N,2)).fill(0);
+var N = 4;
+var V = [30,0,45,60,0,45];
 
 //ボタンクリック時の処理N
 function butotnClickn(){
@@ -103,7 +103,7 @@ function butotnClickn(){
         N = parseInt(ele_n.value,10);
     }
     ele_n.value = "";
-    vncr.innerText = "("+comb(N,2)+"つ入力)";
+    vncr.innerText = "スペース区切りで("+comb(N,2)+"つ入力)";
     butotnClick();
 }
 
@@ -235,4 +235,4 @@ let msg_v = document.getElementById('msg_v');
 msg_v.innerText = "現在の角度："+V;
 
 let vncr = document.getElementById('vncr');
-vncr.innerText = "("+comb(N,2)+"つ入力)";
+vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";
