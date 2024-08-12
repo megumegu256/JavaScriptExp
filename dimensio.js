@@ -55,7 +55,7 @@ function E(n){
 function nrm(n,iv,jv,vt){
     var z = E(n);
 
-    var th = 3.14159265358979323846*vt/180
+    var th = Math.PI*vt/180
     var cv = Math.cos(th);
     var sv = Math.sin(th);
 
@@ -170,7 +170,7 @@ function butotnClick(){
         }
     }
 
-    //log出力
+    //log出力 ///////////////////////////////////////
     console.log("lines:");
     console.log(lines);
 
@@ -183,6 +183,23 @@ function butotnClick(){
 
     console.log("rot:");
     console.log(rot(N,point,V));
+
+    var rotpos = rot(N,point,V);
+    /////////////////////////////////////////////////
+
+    //図形の表示
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    var r = 100;
+    for (let i = 0; i < rotpos[0].length; i++) {
+        ctx.fillStyle = '#000'; // 線は赤色
+        ctx.beginPath(); // パスの初期化
+        ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI); // (100, 50)の位置に半径30pxの円
+        ctx.closePath(); // パスを閉じる
+        ctx.fill(); // 軌跡の範囲を塗りつぶす
+    }    
+
 }
 
 //テキストボックス初期値設定
@@ -203,5 +220,20 @@ let msg_v = document.getElementById('msg_v');
 msg_v.innerText = "現在の角度："+V;
 
 
-//図形の表示
-var canvas = document.getElementById('canvas');
+var rotpos = rot(N, point, V);
+
+// canvas要素を取得し、描画コンテキストを取得
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// 点の半径
+var r = 10;
+
+// rotpos配列の各点について円を描画
+for (let i = 0; i < rotpos[0].length; i++) {
+    ctx.fillStyle = '#000'; // 線は黒色
+    ctx.beginPath(); // パスの初期化
+    ctx.arc(r * (rotpos[0][i] + 320), r * (rotpos[1][i] + 240), 5, 0, 2 * Math.PI); // 円を描画
+    ctx.closePath(); // パスを閉じる
+    ctx.fill(); // 円を塗りつぶす
+}
