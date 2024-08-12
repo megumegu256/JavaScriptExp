@@ -97,13 +97,35 @@ function sum(x,y,z){
 var N = 4;
 var V = [30,0,45,60,0,45];
 
+//テキストボックス初期値設定
+let ele_n = document.getElementById('ele_n');
+ele_n.value = "";
+let checkButtonn = document.getElementById('checkButtonn');
+checkButtonn.addEventListener('click', butotnClickn);
+let msg_n = document.getElementById('msg_n');
+msg_n.innerText = "現在のn=" +N;
+
+
+let ele_v = document.getElementById('ele_v');
+ele_v.value = "";
+let checkButtonv = document.getElementById('checkButtonv');
+checkButtonv.addEventListener('click', butotnClickv);
+let msg_v = document.getElementById('msg_v');
+msg_v.innerText = "現在の角度："+V;
+
+let vncr = document.getElementById('vncr');
+vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";
+
+butotnClick();
+
+
 //ボタンクリック時の処理N
 function butotnClickn(){
     if (isNaN(ele_n.value)==0 && ele_n.value != "") {
         N = parseInt(ele_n.value,10);
     }
     ele_n.value = "";
-    vncr.innerText = "スペース区切りで("+comb(N,2)+"つ入力)";
+    vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";
     butotnClick();
 }
 
@@ -218,21 +240,3 @@ function butotnClick(){
 
 }
 
-//テキストボックス初期値設定
-let ele_n = document.getElementById('ele_n');
-ele_n.value = "";
-let checkButtonn = document.getElementById('checkButtonn');
-checkButtonn.addEventListener('click', butotnClickn);
-let msg_n = document.getElementById('msg_n');
-msg_n.innerText = "現在のn=" +N;
-
-
-let ele_v = document.getElementById('ele_v');
-ele_v.value = "";
-let checkButtonv = document.getElementById('checkButtonv');
-checkButtonv.addEventListener('click', butotnClickv);
-let msg_v = document.getElementById('msg_v');
-msg_v.innerText = "現在の角度："+V;
-
-let vncr = document.getElementById('vncr');
-vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";
