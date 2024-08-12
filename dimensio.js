@@ -144,6 +144,11 @@ function buttonClickv(){
             }
         }
     }
+
+    while (V.length < comb(N,2)) {
+        V.push(0);
+    }
+
     ele_v.value = "";
     buttonClick();
 }
@@ -214,28 +219,48 @@ function buttonClick(){
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#fff';
 
 
 
-    //点の表示
+
+
     let r = 100;
-    for (let i = 0; i < rotpos[0].length; i++) {
-        ctx.fillStyle = '#000';
-        ctx.beginPath();
-        ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI);
-        ctx.closePath();
-        ctx.fill();
-    }    
+
 
     //線の表示
     for (let i = 0; i < lines[0].length; i++) {
-        ctx.strokeStyle = '#888';
+        ctx.strokeStyle = '#88f';
         ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.moveTo(r*rotpos[0][lines[0][i]]+320, r*rotpos[1][lines[0][i]]+240)
+        ctx.lineTo(r*rotpos[0][lines[1][i]]+320, r*rotpos[1][lines[1][i]]+240);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.strokeStyle = '#afc';
+        ctx.beginPath();
+        ctx.lineWidth = 1;
         ctx.moveTo(r*rotpos[0][lines[0][i]]+320, r*rotpos[1][lines[0][i]]+240)
         ctx.lineTo(r*rotpos[0][lines[1][i]]+320, r*rotpos[1][lines[1][i]]+240);
         ctx.stroke();
         ctx.closePath();
     }
+
+    //点の表示
+    for (let i = 0; i < rotpos[0].length; i++) {
+        ctx.fillStyle = '#008';
+        ctx.beginPath();
+        ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = '#0fa';
+        ctx.beginPath();
+        ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 3, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
+    }    
 
 
 }
