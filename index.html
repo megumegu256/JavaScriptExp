@@ -38,8 +38,7 @@
                         varは再代入可能かつ再宣言可能な変数、letは再代入可能だが再宣言不可能な変数、
                         constは再代入不可能かつ再宣言不可能な変数を宣言する際に使用する。
                         変数を宣言する際には、以下のような操作を行う。
-                        </br>
-                        　また、JavaScriptは動的型付け言語であるため、変数の型を宣言する必要がない。
+                        また、JavaScriptは動的型付け言語であるため、変数の型を宣言する必要がない。
                     </p>
                     <div class="list">
                         　let x = 10; //数値</br>
@@ -50,21 +49,100 @@
                     </br>
                     <p>
                         変数に代入されている値が数値である場合、数値の計算を行うことができる。その際には、演算子とよばれる記号を使用する。
-                        以下に、JavaScriptで演算子を使用した数値の計算の例を示す。
                     </p>
                     <div class="list">
                         　let x = 10;</br>
                         　let y = 20;</br>
-                        　let z = x + y; //加算</br>
-                        　let a = x - y; //減算</br>
-                        　let b = x * y; //乗算</br>
-                        　let c = x / y; //除算</br>
-                        　let d = x % y; //剰余</br>
+                        　let z = x + y;　　　//加算</br>
+                        　let a = x - y;　　　//減算</br>
+                        　let b = x * y;　　　//乗算</br>
+                        　let c = x / y;　　　//除算</br>
+                        　let d = x % y;　　　//剰余</br>
                     </div>
                     </br>
                     <p>
+                        変数の値はconsole.log()を使用してコンソールに出力することができる。
+                    </p>
+                    <div class="list">
+                        　let x = 10;</br>
+                        　console.log(x);　　　//10</br>
+                        　let y = "Hello, JavaScript!";</br>
+                        　console.log(y);　　　//Hello, JavaScript!</br>
+                        　console.log(x + y);　　　//10Hello, JavaScript!</br>
+                        　console.log("Hello,"+ x +"Wolrd!");　　　//Hello,10Wolrd!</br>
+                    </div>
+                    </br>
+                
+                <h3>Mathオブジェクト</h3>
+                    <p>
+                        Mathオブジェクトは、数学的な計算を行うためのオブジェクトであり、数学的な計算を行うための関数や定数を扱うことができる。
+                        Mathオブジェクトを使用することで、円周率や平方根、三角関数などの計算を行うことができる。
+                        Mathオブジェクトを使用する際には、Math.関数名()のように記述する。
+                    </p>
+                    <div class="list">
+                        　let x = Math.PI;　　　//円周率</br>
+                        　let y = Math.sqrt(2);　　　//平方根</br>
+                        　let z = Math.sin(30);　　　//サイン</br>
+                        　let a = Math.cos(60);　　　//コサイン</br>
+                        　let b = Math.tan(45);　　　//タンジェント</br>
+                    </div>
+                    </br>
 
-                    
+                <h3>条件分岐</h3>
+                    <p>
+                        条件分岐は、プログラムの中で条件によって処理を分岐させるための構文である。
+                        JavaScriptでは、if文、else if文、else文を使用して条件分岐を行うことができる。
+                    </p>
+                    <div class="list">
+                        　let x = 10;</br>
+                        　if(x > 0){</br>
+                        　　console.log("xは正の数です。");</br>
+                        　}else if(x < 0){</br>
+                        　　console.log("xは負の数です。");</br>
+                        　}else{</br>
+                        　　console.log("xは0です。");</br>
+                        　}　　　//xは正の数です。</br>
+                    </div>
+                    </br>
+
+                <h3>繰り返し処理</h3>
+                    <p>
+                        繰り返し処理は、同じ処理を繰り返し実行するための構文である。
+                        JavaScriptでは、for文、while文、do while文を使用して繰り返し処理を行うことができる。ここでは、for文を使用した繰り返し処理を紹介する。
+                    </p>
+                    <div class="list">
+                        　for(let i = 0; i < 10; i++){</br>
+                        　　console.log(i);</br>
+                        　}</br>
+                        　/*</br>
+                        　　0</br>
+                        　　1</br>
+                        　　2</br>
+                        　　3</br>
+                        　　4</br>
+                        　　5</br>
+                        　　6</br>
+                        　　7</br>
+                        　　8</br>
+                        　　9</br>
+                        　*/</br>
+                    </div>
+                    </br>
+                
+                <h3>関数</h3>
+                    <p>
+                        関数は、複数の処理をまとめて1つの処理として定義するための構文である。
+                        JavaScriptでは、functionを使用して関数を定義することができる。
+                    </p>
+                    <div class="list">
+                        　function add(x, y){</br>
+                        　　return x + y;</br>
+                        　}</br>
+                        　let result = add(10, 20);</br>
+                        　console.log(result);　　　//30</br>
+                    </div>
+                    </br>
+
 
             <h2>作成例</h2>
                 <canvas width="640" height="480" id="canvas" ></canvas></br>
