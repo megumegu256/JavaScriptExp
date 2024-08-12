@@ -157,6 +157,24 @@
                         　let array = [10, 20, 30, 40, 50];</br>
                         　console.log(array.length);　　　//5</br>
                     </div>
+                    
+                <h3>アニメーション</h3>
+                <p>JavaScriptを使用してアニメーションを作成することができる。アニメーションを作成する際には、requestAnimationFrame()を使用してアニメーションを描画する関数を呼び出すことができる。また、setTimeout()を使用することでアニメーションの速度を調整することができる。</p>
+                <div class="list">
+                    　//main_animation.js</br>
+                    　let t = 0;</br> 
+                    　function incrementCounter() {</br>
+                    　　console.log(t);</br>
+                    　　t++;</br>
+                    　　setTimeout(sleep, 10);</br>
+                    　　function sleep(){</br>
+                    　　    requestAnimationFrame(incrementCounter);</br>
+                    　　}</br>
+                    　}</br>
+                    　requestAnimationFrame(incrementCounter);</br>
+                </div>
+                </br>
+                
                 
             <h2>HTMLとの連携</h2>
                 <p>JavaScriptは、HTMLと連携して動的なウェブページを作成することができる。HTMLファイル内でscriptタグを使用してJavaScriptのコードを記述、または外部のJavaScriptファイルを読み込むことで、JavaScriptを実行することができる。以下に、JavaScriptファイルを読み込む例を示す。</p>
@@ -295,23 +313,6 @@
                     </div>
                     </br>
                 
-                <h3>アニメーション</h3>
-                    <p>JavaScriptを使用してアニメーションを作成することができる。アニメーションを作成する際には、requestAnimationFrame()を使用してアニメーションを描画する関数を呼び出すことができる。また、setTimeout()を使用することでアニメーションの速度を調整することができる。</p>
-                    <div class="list">
-                        　//main_animation.js</br>
-                        　let t = 0;</br> 
-                        　function incrementCounter() {</br>
-                        　　console.log(t);</br>
-                        　　t++;</br>
-                        　　setTimeout(sleep, 10);</br>
-                        　　function sleep(){</br>
-                        　　    requestAnimationFrame(incrementCounter);</br>
-                        　　}</br>
-                        　}</br>
-                        　requestAnimationFrame(incrementCounter);</br>
-                    </div>
-                    </br>
-
             <h2>作成例</h2>
                 <p>以上までの技術を扱い、例としてn次元超立方体を2次元に射影して描画するプログラムを作成した。</p>
                 <canvas width="640" height="480" id="canvas" style="border:3px solid rgb(121, 255, 242);"></canvas></br>
