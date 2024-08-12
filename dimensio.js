@@ -21,6 +21,7 @@ function mult(x, y){
         z[i] = new Array(y[0].length).fill(0);
     }
 
+
     for (var i = 0; i < x.length; i++) {
         for (var j = 0; j < y[0].length; j++) {
             z[i][j] = 0;
@@ -32,6 +33,7 @@ function mult(x, y){
     return z;
 }
 
+//n次正方行列定義
 function cMat(n) {
     var mat = new Array(n);
     for (var i = 0; i < n; i++) {
@@ -40,6 +42,7 @@ function cMat(n) {
     return mat;
 }
 
+//単位行列生成
 function E(n){
     mat = cMat(n);
     for (var i = 0; i < n; i++) {
@@ -48,6 +51,7 @@ function E(n){
     return mat;
 }
 
+//回転行列生成
 function nrm(n,iv,jv,vt){
     var z = E(n);
 
@@ -63,6 +67,7 @@ function nrm(n,iv,jv,vt){
     return z;
 }
 
+//回転後の座標計算
 function rot(n,x,y){
     var z = x;
     var t = 0;
@@ -81,15 +86,18 @@ function rot(n,x,y){
     return z;
 }
 
+//行列の和の計算
 function sum(x,y,z){
     for (var i = 0; i < x.length; i++) {
         z[i] = x[i] + y[i];
     }
 }
 
+
 var N = 3;
 var V = new Array(comb(N,2)).fill(0);
 
+//ボタンクリック時の処理N
 function butotnClickn(){
     if (isNaN(ele_n.value)==0 && ele_n.value != "") {
         N = parseInt(ele_n.value,10);
@@ -98,13 +106,18 @@ function butotnClickn(){
     butotnClick();
 }
 
+//ボタンクリック時の処理V
 function butotnClickv(){
     Vs = ele_v.value.split(" ");
     if (ele_v.value != ""){
         V = new Array(comb(N,2)).fill(0);
         for (let i = 0; i < Vs.length; i++) {
             if (isNaN(Vs[i])==0) {
-                V[i] = parseInt(Vs[i],10);
+                if (Vs[i] != "") {
+                    V[i] = parseInt(Vs[i],10);
+                }else{
+                    V[i] = 0;
+                }
             }
         }
     }
@@ -112,8 +125,13 @@ function butotnClickv(){
     butotnClick();
 }
 
+//ボタンクリック時の処理Main
 function butotnClick(){
+    //点の座標
     var f;
+    msg_n.innerText = "現在のn：n=" +N;
+    msg_v.innerText = "現在の角度："+V;
+
     var point = new Array(N);
     for (var i = 0; i < N; i++) {
         point[i] = new Array(Math.pow(2,N)).fill(0);
@@ -134,6 +152,7 @@ function butotnClick(){
     console.log("point:");
     console.log(point);
 
+    //線の組み合わせ
     var g;
     var p;
 
@@ -151,6 +170,7 @@ function butotnClick(){
         }
     }
 
+    //log出力
     console.log("lines:");
     console.log(lines);
 
@@ -165,15 +185,23 @@ function butotnClick(){
     console.log(rot(N,point,V));
 }
 
+//テキストボックス初期値設定
 let ele_n = document.getElementById('ele_n');
 ele_n.value = "";
 
 let checkButtonn = document.getElementById('checkButtonn');
 checkButtonn.addEventListener('click', butotnClickn);
-
+let msg_n = document.getElementById('msg_n');
+msg_n.innerText = "現在のn：n=" +N;
 
 let ele_v = document.getElementById('ele_v');
 ele_v.value = "";
 
 let checkButtonv = document.getElementById('checkButtonv');
 checkButtonv.addEventListener('click', butotnClickv);
+let msg_v = document.getElementById('msg_v');
+msg_v.innerText = "現在の角度："+V;
+
+
+//図形の表示
+var canvas = document.getElementById('canvas');
