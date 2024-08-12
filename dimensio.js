@@ -130,7 +130,7 @@ function butotnClickv(){
 function butotnClick(){
     //点の座標
     var f;
-    msg_n.innerText = "現在のn：n=" +N;
+    msg_n.innerText = "現在のn=" +N;
     msg_v.innerText = "現在の角度："+V;
 
     var point = new Array(N);
@@ -224,7 +224,7 @@ ele_n.value = "";
 let checkButtonn = document.getElementById('checkButtonn');
 checkButtonn.addEventListener('click', butotnClickn);
 let msg_n = document.getElementById('msg_n');
-msg_n.innerText = "現在のn：n=" +N;
+msg_n.innerText = "現在のn=" +N;
 
 
 let ele_v = document.getElementById('ele_v');
