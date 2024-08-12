@@ -159,10 +159,10 @@
                     </div>
                 
             <h2>HTMLとの連携</h2>
-                <p>JavaScriptは、HTMLと連携して動的なウェブページを作成することができる。HTMLファイル内でscriptタグを使用してJavaScriptのコードを記述、または外部のJavaScriptファイルを読み込むことで、JavaScriptを実行することができる。</p>
+                <p>JavaScriptは、HTMLと連携して動的なウェブページを作成することができる。HTMLファイル内でscriptタグを使用してJavaScriptのコードを記述、または外部のJavaScriptファイルを読み込むことで、JavaScriptを実行することができる。以下に、JavaScriptファイルを読み込む例を示す。</p>
                 
-
                 <div class="list">
+                      //index.html</br>
                     　&lt;!DOCTYPE html&gt;</br>
                     　&lt;html lang="ja"&gt;</br>
                     　　&lt;head&gt;</br>
@@ -176,6 +176,70 @@
                     　　&lt;/body&gt;</br>
                     　&lt;/html&gt;</br>
                 </div>
+                </br>
+                <div class="list">
+                      //main.js</br>
+                    　console.log("Hello, JavaScript!");</br>
+                </div>
+                </br>
+
+                <h3>ボタン入力</h3>
+                    <p>ボタン入力は、ボタンをクリックすることでイベントを発生させることができる。JavaScriptでは、addEventListener()を使用してボタンにイベントリスナーを設定することができる。以下に、ボタンをクリックした際にメッセージを出力する例を示す。</p>
+                    <div class="list">
+                        　//index.html</br>
+                        　&lt;!DOCTYPE html&gt;</br>
+                        　&lt;html lang="ja"&gt;</br>
+                        　　&lt;head&gt;</br>
+                        　　&lt;meta charset="utf-8" /&gt;</br>
+                        　　&lt;title&gt;JavaScript&lt;/title&gt;</br>
+                        　　&lt;script src="main.js"&gt;&lt;/script&gt;</br>
+                        　　&lt;/head&gt;</br>
+                        　　&lt;body&gt;</br>
+                        　　&lt;h1&gt;JavaScript&lt;/h1&gt;</br>
+                        　　&lt;button id="button"&gt;Click me!&lt;/button&gt;</br>
+                        　　&lt;/body&gt;</br>
+                        　&lt;/html&gt;</br>
+                    </div>
+                    </br>
+                    <div class="list">
+                        　//main.js</br>
+                        　let button = document.getElementById('button');</br>
+                        　button.addEventListener('click', function(){</br>
+                        　　console.log("Button clicked!");</br>
+                        　});</br>
+                    </div>
+                    </br>
+
+                <h3>テキストボックス</h3>
+                    <p>テキストボックスは、テキストを入力することができる入力欄である。ボタン入力と同様にJavaScriptでは、テキストボックスに入力された値を取得することができる。以下に、テキストボックスに入力された値を取得してコンソールに出力する例を示す。</p>
+                    <div class="list">
+                        　//index.html</br>
+                        　&lt;!DOCTYPE html&gt;</br>
+                        　&lt;html lang="ja"&gt;</br>
+                        　　&lt;head&gt;</br>
+                        　　&lt;meta charset="utf-8" /&gt;</br>
+                        　　&lt;title&gt;JavaScript&lt;/title&gt;</br>
+                        　　&lt;script src="main.js"&gt;&lt;/script&gt;</br>
+                        　　&lt;/head&gt;</br>
+                        　　&lt;body&gt;</br>
+                        　　&lt;h1&gt;JavaScript&lt;/h1&gt;</br>
+                        　　&lt;input type="text" id="textbox" /&gt;</br>
+                        　　&lt;button id="button"&gt;Click me!&lt;/button&gt;</br>
+                        　　&lt;/body&gt;</br>
+                        　&lt;/html&gt;</br>
+                    </div>
+                    </br>
+                    <div class="list">
+                        　//main.js</br>
+                        　let button = document.getElementById('button');</br>
+                        　button.addEventListener('click', function(){</br>
+                        　　let textbox = document.getElementById('textbox');</br>
+                        　　console.log(textbox.value);</br>
+                        　});</br>
+                    </div>
+                    </br>
+
+
                 
                 <h3>
 
