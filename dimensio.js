@@ -86,14 +86,18 @@ function rot(n,x,y){
 }
 
 //行列の和の計算
-function sum(x,y,z){
+function sum(x,y){
     for (let i = 0; i < x.length; i++) {
-        z[i] = x[i] + y[i];
+        if (isNaN(y[i])==0) {
+        x[i] += y[i];
+        }
     }
+    return x;
 }
 
 let N = 4;
 let V = [30,0,45,60,0,45];
+let Vr = [0,0,0,0,0,0];
 
 //テキストボックス初期値設定
 let ele_n = document.getElementById('ele_n');
@@ -110,6 +114,13 @@ let checkButtonv = document.getElementById('checkButtonv');
 checkButtonv.addEventListener('click', buttonClickv);
 let msg_v = document.getElementById('msg_v');
 msg_v.innerText = "現在の角度："+V;
+
+let ele_vr = document.getElementById('ele_vr');
+ele_vr.value = "";
+let checkButtonvr = document.getElementById('checkButtonvr');
+checkButtonvr.addEventListener('click', buttonClickvr);
+let msg_vr = document.getElementById('msg_vr');
+msg_vr.innerText = "現在の変化速度："+Vr;
 
 let vncr = document.getElementById('vncr');
 vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";
@@ -151,12 +162,39 @@ function buttonClickv(){
     buttonClick();
 }
 
+//ボタンクリック時の処理Vr
+function buttonClickvr(){
+    Vs = ele_vr.value.split(" ");
+    if (ele_vr.value != ""){
+        Vr = new Array(comb(N,2)).fill(0);
+        for (let i = 0; i < Vs.length; i++) {
+            if (isNaN(Vs[i])==0) {
+                if (Vs[i] != "") {
+                    Vr[i] = parseInt(Vs[i],10);
+                }else{
+                    Vr[i] = 0;
+                }
+            }
+        }
+    }
+
+    while (Vr.length < comb(N,2)) {
+        Vr.push(0);
+    }
+
+    ele_vr.value = "";
+    buttonClick();
+}
+
+
+
 //ボタンクリック時の処理Main
 function buttonClick(){
     //点の座標
     let f;
     msg_n.innerText = "現在のn=" +N;
     msg_v.innerText = "現在の角度："+V;
+    msg_vr.innerText = "現在の変化速度："+Vr;
 
     let point = new Array(N);
     for (let i = 0; i < N; i++) {
@@ -256,3 +294,24 @@ function buttonClick(){
         ctx.fill();
     }
 }
+
+function incrementCounter() {
+    buttonClick();
+
+    //角度の更新
+    sum(V,Vr);
+    
+    for (let i = 0; i < V.length; i++) {
+        if (V[i] <= 360) {
+            V[i] = V[i]%360;
+        }
+    }
+    
+    setTimeout(sleep, 10);
+    function sleep(){
+        requestAnimationFrame(incrementCounter);
+    }
+}
+
+// 初回の呼び出し
+requestAnimationFrame(incrementCounter);
