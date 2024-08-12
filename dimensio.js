@@ -103,6 +103,7 @@ function butotnClickn(){
         N = parseInt(ele_n.value,10);
     }
     ele_n.value = "";
+    vncr.innerText = "("+comb(N,2)+"つ入力)";
     butotnClick();
 }
 
@@ -190,50 +191,48 @@ function butotnClick(){
     //図形の表示
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
+
+    //点の表示
     var r = 100;
     for (let i = 0; i < rotpos[0].length; i++) {
-        ctx.fillStyle = '#000'; // 線は赤色
-        ctx.beginPath(); // パスの初期化
-        ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI); // (100, 50)の位置に半径30pxの円
-        ctx.closePath(); // パスを閉じる
-        ctx.fill(); // 軌跡の範囲を塗りつぶす
+        ctx.fillStyle = '#000';
+        ctx.beginPath();
+        ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
     }    
+
+    //線の表示
+    for (let i = 0; i < lines[0].length; i++) {
+        ctx.strokeStyle = '#888';
+        ctx.beginPath();
+        ctx.moveTo(r*rotpos[0][lines[0][i]]+320, r*rotpos[1][lines[0][i]]+240)
+        ctx.lineTo(r*rotpos[0][lines[1][i]]+320, r*rotpos[1][lines[1][i]]+240);
+        ctx.stroke();
+        ctx.closePath();
+    }
+
 
 }
 
 //テキストボックス初期値設定
 let ele_n = document.getElementById('ele_n');
 ele_n.value = "";
-
 let checkButtonn = document.getElementById('checkButtonn');
 checkButtonn.addEventListener('click', butotnClickn);
 let msg_n = document.getElementById('msg_n');
 msg_n.innerText = "現在のn：n=" +N;
 
+
 let ele_v = document.getElementById('ele_v');
 ele_v.value = "";
-
 let checkButtonv = document.getElementById('checkButtonv');
 checkButtonv.addEventListener('click', butotnClickv);
 let msg_v = document.getElementById('msg_v');
 msg_v.innerText = "現在の角度："+V;
 
-
-var rotpos = rot(N, point, V);
-
-// canvas要素を取得し、描画コンテキストを取得
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-// 点の半径
-var r = 10;
-
-// rotpos配列の各点について円を描画
-for (let i = 0; i < rotpos[0].length; i++) {
-    ctx.fillStyle = '#000'; // 線は黒色
-    ctx.beginPath(); // パスの初期化
-    ctx.arc(r * (rotpos[0][i] + 320), r * (rotpos[1][i] + 240), 5, 0, 2 * Math.PI); // 円を描画
-    ctx.closePath(); // パスを閉じる
-    ctx.fill(); // 円を塗りつぶす
-}
+let vncr = document.getElementById('vncr');
+vncr.innerText = "("+comb(N,2)+"つ入力)";
