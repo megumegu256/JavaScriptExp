@@ -238,10 +238,62 @@
                         　});</br>
                     </div>
                     </br>
-
-
                 
-                <h3>
+                <h3>描画</h3>
+                    <p>JavaScriptを使用して円や線などの図形の描画を行うことができる。HTML5では、canvas要素を使用して描画を行うことができる。</p>
+                    <div class="list">
+                        　//index_circle.html</br>
+                        　&lt;!DOCTYPE html&gt;</br>
+                        　&lt;html lang="ja"&gt;</br>
+                        　　&lt;head&gt;</br>
+                        　　　&lt;meta charset="utf-8" /&gt;</br>
+                        　　　&lt;title&gt;JavaScript&lt;/title&gt;</br>
+                        　　　&lt;script src="main.js"&gt;&lt;/script&gt;</br>
+                        　　&lt;/head&gt;</br>
+                        　　&lt;body&gt;</br>
+                        　　　&lt;h1&gt;JavaScript&lt;/h1&gt;</br>
+                        　　　&lt;canvas width="640" height="480" id="canvas" style="border:3px solid rgb(121, 255, 242);"&gt;&lt;/canvas&gt;</br>
+                        　　&lt;/body&gt;</br>
+                        　&lt;/html&gt;</br>
+                    </div>
+                    </br>
+                    <div class="list">
+                        　//main_circle.js</br>
+                        　let canvas = document.getElementById('canvas');</br>
+                        　let context = canvas.getContext('2d');</br>
+                        　context.beginPath();</br>
+                        　context.arc(320, 240, 100, 0, Math.PI * 2, false);</br>
+                        　context.fillStyle = 'rgb(255, 0, 0)';</br>
+                        　context.fill();</br>
+                    </div>
+                    </br></br>
+                    <div class="list">
+                        　//index_line.html</br>
+                        　&lt;!DOCTYPE html&gt;</br>
+                        　&lt;html lang="ja"&gt;</br>
+                        　　&lt;head&gt;</br>
+                        　　　&lt;meta charset="utf-8" /&gt;</br>
+                        　　　&lt;title&gt;JavaScript&lt;/title&gt;</br>
+                        　　　&lt;script src="main.js"&gt;&lt;/script&gt;</br>
+                        　　&lt;/head&gt;</br>
+                        　　&lt;body&gt;</br>
+                        　　　&lt;h1&gt;JavaScript&lt;/h1&gt;</br>
+                        　　　&lt;canvas width="640" height="480" id="canvas" style="border:3px solid rgb(121, 255, 242);"&gt;&lt;/canvas&gt;</br>
+                        　　&lt;/body&gt;</br>
+                        　&lt;/html&gt;</br>
+                    </div>
+                    </br>
+                    <div class="list">
+                        　//main_line.js</br>
+                        　let canvas = document.getElementById('canvas');</br>
+                        　let context = canvas.getContext('2d');</br>
+                        　context.beginPath();</br>
+                        　context.moveTo(100, 100);</br>
+                        　context.lineTo(200, 200);</br>
+                        　context.strokeStyle = 'rgb(0, 0, 255)';</br>
+                        　context.stroke();</br>
+                    </div>
+                    </br>
 
             <h2>作成例</h2>
                 <p>以上までの技術を扱い、例としてn次元超立方体を2次元に射影して描画するプログラムを作成した。</p>
