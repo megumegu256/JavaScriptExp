@@ -219,14 +219,11 @@ function buttonClick(){
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#fff';
-
-
-
-
+    ctx.fillStyle = '#46a';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
 
     let r = 100;
-
 
     //線の表示
     for (let i = 0; i < lines[0].length; i++) {
@@ -249,7 +246,7 @@ function buttonClick(){
 
     //点の表示
     for (let i = 0; i < rotpos[0].length; i++) {
-        ctx.fillStyle = '#008';
+        ctx.fillStyle = '#048';
         ctx.beginPath();
         ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI);
         ctx.closePath();
