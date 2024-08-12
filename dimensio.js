@@ -172,9 +172,6 @@ function butotnClick(){
         }
     }
 
-    console.log("point:");
-    console.log(point);
-
     //線の組み合わせ
     var g;
     var p;
@@ -194,6 +191,7 @@ function butotnClick(){
     }
 
     //log出力 ///////////////////////////////////////
+    /*
     console.log("lines:");
     console.log(lines);
 
@@ -206,9 +204,11 @@ function butotnClick(){
 
     console.log("rot:");
     console.log(rot(N,point,V));
+    */
+    /////////////////////////////////////////////////
 
     var rotpos = rot(N,point,V);
-    /////////////////////////////////////////////////
+
 
     //図形の表示
     const canvas = document.getElementById('canvas');
