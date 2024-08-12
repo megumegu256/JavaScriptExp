@@ -20,20 +20,20 @@
     <body>
         <h1>JavaScript</h1>
             <h2>概要</h2>
-                <p>　JavaScriptとは、主にウェブ開発において広く使用されるプログラミング言語であり、インターネットブラウザ上で実行することのできるプログラミング言語である。このJavaScriptの基礎的な活用として、座標やグラフに関する開発をテーマに解説していく。</p>
-            <h2>技術解説</h2>  
-                <p>　JavaScriptの基礎的な技術に関して、Pythonのような他の言語の知識も交えて解説していく。</p>
+                <p>JavaScriptとは、主にウェブ開発において広く使用されるプログラミング言語であり、インターネットブラウザ上で実行することのできるプログラミング言語である。このJavaScriptの基礎的な活用として、座標やグラフに関する開発をテーマに解説していく。</p>
+            <h2>JavaScriptの技術解説</h2>  
+                <p>JavaScriptの基礎的な技術に関して、Pythonのような他の言語の知識も交えて解説していく。</p>
             </h2>
                 <h3>コンソールにログを出力</h3>
-                    <p>　console.log()は、JavaScriptのコンソールにメッセージを出力するための関数である。この関数を使用することで、プログラムの途中経過やデバッグのための情報を出力することができる。これはPythonのprint関数や、C言語のprintf関数に近い動作をする。JavaScriptのファイルが実行されているブラウザ上で右クリック＞検証＞Consoleの順に参照することで、動作を確認することができる。</p>  
+                    <p>console.log()は、JavaScriptのコンソールにメッセージを出力するための関数である。この関数を使用することで、プログラムの途中経過やデバッグのための情報を出力することができる。これはPythonのprint関数や、C言語のprintf関数に近い動作をする。JavaScriptのファイルが実行されているブラウザ上で右クリック＞検証＞Consoleの順に参照することで、動作を確認することができる。</p>  
                     <div class="list">
-                        　console.log("Hello, JavaScript!");
+                        console.log("Hello, JavaScript!");
                     </div>
                     </br>
 
                 <h3>変数</h3>
                     <p>
-                        　変数はデータを格納することができる箱のようなものであり、変数は宣言をすることで扱えるようになる。
+                        変数はデータを格納することができる箱のようなものであり、変数は宣言をすることで扱えるようになる。
                         JavaScriptでは、変数を宣言するためにvar、let、constの3つ使用する。
                         varは再代入可能かつ再宣言可能な変数、letは再代入可能だが再宣言不可能な変数、
                         constは再代入不可能かつ再宣言不可能な変数を宣言する際に使用する。
@@ -142,9 +142,50 @@
                         　console.log(result);　　　//30</br>
                     </div>
                     </br>
+                
+                <h3>配列</h3>
+                    <p>
+                        配列は、複数のデータをまとめて扱うためのデータ構造である。
+                        JavaScriptでは、配列を定義する際には、[ ]を使用する。
+                    </p>
+                    <div class="list">
+                        　let array = [10, 20, 30, 40, 50];</br>
+                        　console.log(array[0]);　　　//10</br>
+                        　console.log(array[1]);　　　//20</br>
+                        　console.log(array[2]);　　　//30</br>
+                        　console.log(array[3]);　　　//40</br>
+                        　console.log(array[4]);　　　//50</br>
+                    </div>
+                    </br>
+                    <p>lengthプロパティを使用することで、配列の要素数を取得することができる。</p>
+                    <div class="list">
+                        　let array = [10, 20, 30, 40, 50];</br>
+                        　console.log(array.length);　　　//5</br>
+                    </div>
+                
+            <h2>HTMLとの連携</h2>
+                <p>JavaScriptは、HTMLと連携して動的なウェブページを作成することができる。HTMLファイル内でscriptタグを使用してJavaScriptのコードを記述、または外部のJavaScriptファイルを読み込むことで、JavaScriptを実行することができる。</p>
+                
 
+                <div class="list">
+                    　&lt;!DOCTYPE html&gt;</br>
+                    　&lt;html lang="ja"&gt;</br>
+                    　　&lt;head&gt;</br>
+                    　　&lt;meta charset="utf-8" /&gt;</br>
+                    　　&lt;title&gt;JavaScript&lt;/title&gt;</br>
+                    　　&lt;script src="main.js"&gt;&lt;/script&gt;</br>
+                    　　&lt;/head&gt;</br>
+                    　　&lt;body&gt;</br>
+                    　　&lt;h1&gt;JavaScript&lt;/h1&gt;</br>
+                    　　&lt;p&gt;Hello, JavaScript!&lt;/p&gt;</br>
+                    　　&lt;/body&gt;</br>
+                    　&lt;/html&gt;</br>
+                </div>
+                
+                <h3>
 
             <h2>作成例</h2>
+                <p>以上までの技術を扱い、例としてn次元超立方体を2次元に射影して描画するプログラムを作成した。</p>
                 <canvas width="640" height="480" id="canvas" ></canvas></br>
 
                 <label>n次元超立方体：n=<input type="text" size="2" value="" id="ele_n">(2<=n<=8～12)</label>
@@ -157,10 +198,233 @@
 
                 <script src="dimensio.js"></script>
 
+                </br>
+                <p>
+                    以下に、作成したプログラムのソースコードを示す。
+                </p>
+                <div class="list">
+                    　//階乗の計算</br>
+                    　function fact(x){</br>
+                    　　if(x==0){</br>
+                    　　　return 1;</br>
+                    　　}</br>
+                    　　return x*fact(x-1);</br>
+                    　}</br>
+                    　</br>
+                    　//組み合わせ(コンビネーション)の計算</br>
+                    　function comb(n, k){</br>
+                    　　return fact(n)/(fact(k)*fact(n-k));</br>
+                    　}</br>
+                    　</br>
+                    　//行列の積の計算</br>
+                    　function mult(x, y){</br>
+                    　</br>
+                    　　if(x[0].length != y.length) return null;</br>
+                    　</br>
+                    　　var z = new Array(x.length);</br>
+                    　　for (var i = 0; i < x.length; i++) {</br>
+                    　　　z[i] = new Array(y[0].length).fill(0);</br>
+                    　　}</br>
+                    　</br>
+                    　　for (var i = 0; i < x.length; i++) {</br>
+                    　　　for (var j = 0; j < y[0].length; j++) {</br>
+                    　　　　z[i][j] = 0;</br>
+                    　　　　for (var k = 0; k < y.length; k++) {</br>
+                    　　　　　z[i][j] += x[i][k] * y[k][j];</br>
+                    　　　　}</br>
+                    　　　}</br>
+                    　　}</br>
+                    　　return z;</br>
+                    　}</br>
+                    　</br>
+                    　//n次正方行列定義</br>
+                    　function cMat(n) {</br>
+                    　　var mat = new Array(n);</br>
+                    　　for (var i = 0; i < n; i++) {</br>
+                    　　　mat[i] = new Array(n).fill(0);</br>
+                    　　}</br>
+                    　　return mat;</br>
+                    　}</br>
+                    　</br>
+                    　//単位行列生成</br>
+                    　function E(n){</br>
+                    　　mat = cMat(n);</br>
+                    　　for (var i = 0; i < n; i++) {</br>
+                    　　　mat[i][i] = 1.0;</br>
+                    　　}</br>
+                    　　return mat;</br>
+                    　}</br>
+                    　</br>
+                    　//回転行列生成</br>
+                    　function nrm(n,iv,jv,vt){</br>
+                    　　var z = E(n);</br>
+                    　</br>
+                    　　var th = Math.PI*vt/180</br>
+                    　　var cv = Math.cos(th);</br>
+                    　　var sv = Math.sin(th);</br>
+                    　</br>
+                    　　z[iv][iv] = cv;</br>
+                    　　z[iv][jv] = sv;</br>
+                    　　z[jv][iv] = -sv;</br>
+                    　　z[jv][jv] = cv;</br>
+                    　</br>
+                    　　return z;</br>
+                    　}</br>
+                    　</br>
+                    　//回転後の座標計算</br>
+                    　function rot(n,x,y){</br>
+                    　　var z = x;</br>
+                    　　var t = 0;</br>
+                    　　var jt = 0;</br>
+                    　　var m;</br>
+                    　　for (var i = 0; i < n; i++) {</br>
+                    　　　for (var j = 0; j < n-i-1; j++) {</br>
+                    　　　　jt = j+i+1;</br>
+                    　　　　m = nrm(n,i,jt,y[t]);</br>
+                    　</br>
+                    　　　　z = mult(m,z);</br>
+                    　</br>
+                    　　　　t++;</br>
+                    　　　}</br>
+                    　　}</br>
+                    　　return z;</br>
+                    　}</br>
+                    　</br>
+                    　//行列の和の計算</br>
+                    　function sum(x,y,z){</br>
+                    　　for (var i = 0; i < x.length; i++) {</br>
+                    　　　z[i] = x[i] + y[i];</br>
+                    　　}</br>
+                    　}</br>
+                    　</br>
+                    　</br>
+                    　var N = 4;</br>
+                    　var V = [30,0,45,60,0,45];</br>
+                    　</br>
+                    　//テキストボックス初期値設定</br>
+                    　let ele_n = document.getElementById('ele_n');</br>
+                    　ele_n.value = "";</br>
+                    　let checkButtonn = document.getElementById('checkButtonn');</br>
+                    　checkButtonn.addEventListener('click', buttonClickn);</br>
+                    　let msg_n = document.getElementById('msg_n');</br>
+                    　msg_n.innerText = "現在のn=" +N;</br>
+                    　</br>
+                    　let ele_v = document.getElementById('ele_v');</br>
+                    　ele_v.value = "";</br>
+                    　let checkButtonv = document.getElementById('checkButtonv');</br>
+                    　checkButtonv.addEventListener('click', buttonClickv);</br>
+                    　let msg_v = document.getElementById('msg_v');</br>
+                    　msg_v.innerText = "現在の角度："+V;</br>
+                    　</br>
+                    　let vncr = document.getElementById('vncr');</br>
+                    　vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";</br>
+                    　</br>
+                    　buttonClick();</br>
+                    　</br>
+                    　//ボタンクリック時の処理N</br>
+                    　function buttonClickn(){</br>
+                    　　if (isNaN(ele_n.value)==0 && ele_n.value != "") {</br>
+                    　　　N = parseInt(ele_n.value,10);</br>
+                    　　}</br>
+                    　　ele_n.value = "";</br>
+                    　　vncr.innerText = "(スペース区切りで"+comb(N,2)+"つ入力)";</br>
+                    　　buttonClick();</br>
+                    　}</br>
+　
+                    　//ボタンクリック時の処理V</br>
+                    　function buttonClickv(){</br>
+                    　　Vs = ele_v.value.split(" ");</br>
+                    　　if (ele_v.value != ""){</br>
+                    　　　V = new Array(comb(N,2)).fill(0);</br>
+                    　　　for (let i = 0; i < Vs.length; i++) {</br>
+                    　　　　if (isNaN(Vs[i])==0) {</br>
+                    　　　　　if (Vs[i] != "") {</br>
+                    　　　　　　V[i] = parseInt(Vs[i],10);</br>
+                    　　　　　}else{</br>
+                    　　　　　　V[i] = 0;</br>
+                    　　　　　}</br>
+                    　　　　}</br>
+                    　　　}</br>
+                    　　}</br>
+                    　　ele_v.value = "";</br>
+                    　　buttonClick();</br>
+                    　}</br>
+                    　</br>
+                    　//ボタンクリック時の処理Main</br>
+                    　function buttonClick(){</br>
+                    　　//点の座標</br>
+                    　　var f;</br>
+                    　　msg_n.innerText = "現在のn=" +N;</br>
+                    　　msg_v.innerText = "現在の角度："+V;</br>
+                    　</br>
+                    　　var point = new Array(N);</br>
+                    　　for (var i = 0; i < N; i++) {</br>
+                    　　　point[i] = new Array(Math.pow(2,N)).fill(0);</br>
+                    　　}</br>
+                    　</br>
+                    　　for (let j = 0; j < Math.pow(2,N); j++) {</br>
+                    　　　for (let i = 0; i < N; i++) {</br>
+                    　　　　if (parseInt(j/(Math.pow(2,i)))%2 == 0) {</br>
+                    　　　　　f = -1;</br>
+                    　　　　}else{ </br>
+                    　　　　　f = 1;</br>
+                    　　　　}</br>
+                    　</br>
+                    　　　　point[i][j] = f;</br>
+                    　　　}</br>
+                    　　}</br>
+                    　</br>
+                    　　//線の組み合わせ</br>
+                    　　var g;</br>
+                    　　var p;</br>
+                    　</br>
+                    　　var lines = new Array(2);</br>
+                    　　for (var i = 0; i < 2; i++) {</br>
+                    　　　lines[i] = new Array(comb(N,2)).fill(0);</br>
+                    　　}</br>
+                    　</br>
+                    　　for (let j = 0; j < N; j++) {</br>
+                    　　　g = Math.pow(2,N-1);</br>
+                    　　　for (let i = 0; i < g; i++) {</br>
+                    　　　　p = Math.pow(2,j);</br>
+                    　　　　lines[0][j*g+i] = i+p*(parseInt(i/p));</br>
+                    　　　　lines[1][j*g+i] = i+p*(parseInt(i/p))+p;</br>
+                    　　　}</br>
+                    　　}</br>
+                    　</br>
+                    　　var rotpos = rot(N,point,V);</br>
+                    　</br>
+                    　　//図形の表示</br>
+                    　　const canvas = document.getElementById('canvas');</br>
+                    　　const ctx = canvas.getContext('2d');</br>
+                    　　ctx.clearRect(0, 0, canvas.width, canvas.height);</br>
+                    　</br>
+                    　　//点の表示</br>
+                    　　var r = 100;</br>
+                    　　for (let i = 0; i < rotpos[0].length; i++) {</br>
+                    　　　ctx.fillStyle = '#000';</br>
+                    　　　ctx.beginPath();</br>
+                    　　　ctx.arc(r*rotpos[0][i]+320, r*rotpos[1][i]+240, 5, 0, 2 * Math.PI);</br>
+                    　　　ctx.closePath();</br>
+                    　　　ctx.fill();</br>
+                    　　}</br>
+                    　</br>
+                    　　//線の表示</br>
+                    　　for (let i = 0; i < lines[0].length; i++) {</br>
+                    　　　ctx.strokeStyle = '#888';</br>
+                    　　　ctx.beginPath();</br>
+                    　　　ctx.moveTo(r*rotpos[0][lines[0][i]]+320, r*rotpos[1][lines[0][i]]+240)</br>
+                    　　　ctx.lineTo(r*rotpos[0][lines[1][i]]+320, r*rotpos[1][lines[1][i]]+240);</br>
+                    　　　ctx.stroke();</br>
+                    　　　ctx.closePath();</br>
+                    　　}</br>
+                    　}</br>
+                </div>
+
 
 
         <p>
-            <h3>情報-課題4 / 制作時期:2024年7月, 作業時間:約49時間</h3>
+            <h3>情報-課題4 / 制作時期:2024年7月, 作業時間:約54時間</h3>
         <p>
             
     </body>
